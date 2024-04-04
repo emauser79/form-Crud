@@ -1,0 +1,58 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal CRUD</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!--QUI CI VA LA TABELLA CRUD -->
+         <div class="container mt-3">
+          <h1>Dati CRUD</h1>
+          <div>
+              <form (submit)="addForm()">
+                  <div class="mb-3">
+                      <label for="candidato" class="form-label">Candidato</label>
+                      <input type="text" class="form-control" id="candidato" [(ngModel)]="newForm.candidato" name="candidato" required>
+                  </div>
+                  <div class="mb-3">
+                      <label for="competenza" class="form-label">competenze</label>
+                      <textarea class="form-control" id="competenza" [(ngModel)]="newForm.competenza" name="competenza" required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Add Dato</button>
+              </form>
+          </div>
+          <table class="table mt-3">
+              <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>Candidato</th>
+                      <th>Competenze</th>
+                      <th>Actions</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let Form of forms">
+                    <td>{{ Form.id }}</td>
+                    <td><input type="text" [(ngModel)]="Form.candidato" name="candidato" /></td>
+                    <td><textarea [(ngModel)]="Form.competenza" name="competenza"></textarea></td>
+                    <td>
+                        <button class="btn btn-primary" (click)="updateForm(Form)">Update</button>
+                        <button class="btn btn-danger" (click)="deleteForm(Form.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div> 
+    
+      </div>
+     
+    </div>
+  </div>
+</div>
